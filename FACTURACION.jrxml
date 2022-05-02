@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7dbacf1-7cb4-42aa-a19b-bb9c21859961">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     temp.`Cedula` AS temp_Cedula,
+     temp.`Nombre` AS temp_Nombre,
+     temp.`Direccion` AS temp_Direccion,
+     temp.`Tipo_Equipo` AS temp_Tipo_Equipo,
+     temp.`Marca` AS temp_Marca,
+     temp.`SN` AS temp_SN,
+     temp.`Modelo` AS temp_Modelo,
+     temp.`Observacion` AS temp_Observacion,
+     temp.`Recibido_por` AS temp_Recibido_por,
+     temp.`Fecha_ingreso` AS temp_Fecha_ingreso,
+     temp.`Fecha_salida` AS temp_Fecha_salida
+FROM
+     `temp` temp]]>
+	</queryString>
+	<field name="temp_Cedula" class="java.lang.String"/>
+	<field name="temp_Nombre" class="java.lang.String"/>
+	<field name="temp_Direccion" class="java.lang.String"/>
+	<field name="temp_Tipo_Equipo" class="java.lang.String"/>
+	<field name="temp_Marca" class="java.lang.String"/>
+	<field name="temp_SN" class="java.lang.String"/>
+	<field name="temp_Modelo" class="java.lang.String"/>
+	<field name="temp_Observacion" class="java.lang.String"/>
+	<field name="temp_Recibido_por" class="java.lang.String"/>
+	<field name="temp_Fecha_ingreso" class="java.lang.String"/>
+	<field name="temp_Fecha_salida" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="231" splitType="Stretch">
+			<staticText>
+				<reportElement x="190" y="37" width="318" height="61" uuid="e161637d-a452-4d58-bf58-8f7a08a0774e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibo de Equipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="139" width="235" height="63" uuid="e72926f9-a575-4962-b79f-0f3d7b8a2829"/>
+				<textElement>
+					<font fontName="Consolas"/>
+				</textElement>
+				<text><![CDATA[Dirección: Calle 26 # 2 - 40, Edificio HyB
+Teléfono: 7840275 - 3114217781
+Skype: dairodurango@outlook.com
+E-mail: serviciosysolucionesdyg@gmail.com
+Montería - Córdoba
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="98" width="44" height="20" uuid="004d470d-f8a3-4a09-9144-152f0f1dcbe8"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="408" y="98" width="100" height="20" uuid="b197cb55-3ebc-43e2-8fef-da2ed3930e18"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Fecha_ingreso}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="13" y="8" width="147" height="131" uuid="4b561fe7-29f4-4555-bf02-a4fa8f73b423"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Downloads\\PROYECTO_SOLUCIONES_INFORMATICAS\\PROYECTO_SOLUCIONES_INFORMATICAS\\17264202_1146545058788458_2877354037369365716_n.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="200" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="0" width="139" height="20" uuid="45125c68-12ba-44c0-be3f-fcdc5c66026d"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Cedula o RUT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="0" width="338" height="20" uuid="b5e1ca3f-ac5b-4e90-b6f7-fc1c3dd6ff5f"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Cedula}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="20" width="139" height="20" uuid="7c321d49-b552-49dd-a8c4-094939089b51"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="20" width="338" height="20" uuid="5c5b4089-3851-4166-be40-1b54058f2dbc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="40" width="139" height="20" uuid="a433faf0-b757-4125-917f-c756ee190851"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="40" width="338" height="20" uuid="ef6a6139-0b45-4a8f-be57-8883f2d6365f"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="60" width="139" height="20" uuid="04a20043-8e2c-43be-9764-df419e078a78"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Tipo de Equipo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="60" width="338" height="20" uuid="05798e86-c124-4071-b4df-0ddb837df45e"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Tipo_Equipo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="80" width="139" height="20" uuid="4c858d87-f690-4b80-9c0d-c87198caffd8"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="80" width="338" height="20" uuid="5f65af8d-bf6f-43c6-bdaf-1aa19168f2bc"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Marca}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="120" width="139" height="20" uuid="64ffe4b7-eed9-44f0-aea8-5dc4a83621dc"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Serial]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="120" width="338" height="20" uuid="d13fecad-1db8-4662-b3bd-03afda1e6caf"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_SN}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="100" width="139" height="20" uuid="9f4598f7-74b7-4195-9730-ba4702a154ac"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="100" width="338" height="20" uuid="47abb48e-5cfd-40b8-af34-daf4088be2c6"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Modelo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="140" width="139" height="20" uuid="df0c0ba3-2e97-46a2-ae87-e8f93a0eb7c0"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="140" width="338" height="20" uuid="91414ac7-390f-4f10-834a-c140f72b7a72"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Observacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="180" width="139" height="20" uuid="7b8ab1c8-a9eb-4728-981c-6122599169df"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Recibido por:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="180" width="338" height="20" uuid="f9f0d732-2041-4089-b6f0-3838e99e0931"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Recibido_por}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="160" width="139" height="20" uuid="d7f13c3b-d68d-4751-badf-68b0ad19e97a"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha prometido:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="216" y="160" width="338" height="20" uuid="6821a636-2312-4ebd-ad0e-b41f37a4fd9e"/>
+				<textElement>
+					<font fontName="Consolas" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp_Fecha_salida}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="70" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

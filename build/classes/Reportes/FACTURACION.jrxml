@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a9d209b-82c8-4f02-a4b2-7d77bec6d628">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     clientes.`Nombres` AS clientes_Nombres,
+     clientes.`Departamento` AS clientes_Departamento,
+     clientes.`Ciudad` AS clientes_Ciudad,
+     clientes.`Direccion` AS clientes_Direccion,
+     clientes.`Telefono` AS clientes_Telefono,
+     equipos.`tipo` AS equipos_tipo,
+     equipos.`marca` AS equipos_marca,
+     equipos.`modelo` AS equipos_modelo,
+     equipos.`observaciones` AS equipos_observaciones,
+     facturacion.`id` AS facturacion_id,
+     facturacion.`cl_RUT` AS facturacion_cl_RUT,
+     facturacion.`eq_Serial` AS facturacion_eq_Serial,
+     facturacion.`em_Nombres` AS facturacion_em_Nombres,
+     facturacion.`Fecha_Ingreso` AS facturacion_Fecha_Ingreso,
+     facturacion.`txtFecha_Salida` AS facturacion_txtFecha_Salida
+FROM
+     `clientes` clientes INNER JOIN `equipos` equipos ON clientes.`RUT` = equipos.`cli_rut`
+     INNER JOIN `facturacion` facturacion ON clientes.`RUT` = facturacion.`cl_RUT`
+     AND equipos.`serial` = facturacion.`eq_Serial` ORDER BY id DESC LIMIT 1]]>
+	</queryString>
+	<field name="facturacion_id" class="java.lang.Integer"/>
+	<field name="facturacion_Fecha_Ingreso" class="java.lang.String"/>
+	<field name="facturacion_cl_RUT" class="java.lang.String"/>
+	<field name="clientes_Nombres" class="java.lang.String"/>
+	<field name="clientes_Departamento" class="java.lang.String"/>
+	<field name="clientes_Ciudad" class="java.lang.String"/>
+	<field name="clientes_Direccion" class="java.lang.String"/>
+	<field name="clientes_Telefono" class="java.lang.String"/>
+	<field name="facturacion_eq_Serial" class="java.lang.String"/>
+	<field name="equipos_tipo" class="java.lang.String"/>
+	<field name="equipos_marca" class="java.lang.String"/>
+	<field name="equipos_modelo" class="java.lang.String"/>
+	<field name="equipos_observaciones" class="java.lang.String"/>
+	<field name="facturacion_em_Nombres" class="java.lang.String"/>
+	<field name="facturacion_txtFecha_Salida" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="181" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="176" y="10" width="294" height="40" uuid="8ad7ee54-fc06-4d73-92f1-26bbb70048ce"/>
+				<textElement>
+					<font fontName="Consolas" size="30" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ORDEN DE INGRESO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="176" y="50" width="294" height="82" uuid="0f6c9094-bcb7-4f4e-ab7e-00fb29f56fbf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección: Calle 29 # 2 - 40, CENTRO - EDIFICIO HyB
+Teléfonos: 7840275 - 3114217781
+Skype: dairodurango@outlook.com
+email: serviciosysolucionesdyg@gmail.com]]></text>
+			</staticText>
+			<image>
+				<reportElement x="4" y="0" width="156" height="132" uuid="9d01097e-5c20-4d4d-bd50-be1b9540c584"/>
+				<imageExpression><![CDATA["Logo_2.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="6" y="137" width="81" height="20" forecolor="#000000" uuid="919ae587-7f32-481d-a7bc-e0c4e414553c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FACTURA N°]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="88" y="139" width="88" height="18" uuid="2a6821eb-2b51-4b32-ab38-4a22db1367bb"/>
+				<textElement>
+					<font fontName="Consolas" size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacion_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="6" y="157" width="48" height="20" forecolor="#000000" uuid="5c9b2375-1caf-405f-9542-fa686c27e274"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" isBold="false"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="88" y="157" width="88" height="18" uuid="b3ba4394-165a-4178-8576-68a82d37f302"/>
+				<textElement>
+					<font fontName="Consolas" size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacion_Fecha_Ingreso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="387" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="3" width="132" height="20" forecolor="#000000" uuid="49b711a0-35c5-44dd-898e-f5354a75535f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cédula]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="3" width="338" height="18" uuid="1f40bfc8-e901-402d-875d-6b484c1e08b7"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacion_cl_RUT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="23" width="132" height="20" forecolor="#000000" uuid="132f3d07-1f0a-4508-a8ba-f431b277d345"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="23" width="338" height="18" uuid="1c239dfb-f1e6-4945-9e84-bdc2c886aed3"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_Nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="43" width="132" height="20" forecolor="#000000" uuid="bac12fd2-e988-4d68-9ea7-f13ed3fd1889"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Departamento]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="43" width="338" height="18" uuid="a656b9c4-562b-4097-bf9d-88cd8943871f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_Departamento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="63" width="132" height="20" forecolor="#000000" uuid="10670d79-cf31-435c-8485-9205932658b2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="63" width="338" height="18" uuid="21701a96-5a25-4308-a37b-90ed752cb494"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_Ciudad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="83" width="132" height="20" forecolor="#000000" uuid="846129c0-839e-4057-8f60-a983f690f8b5"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="83" width="338" height="18" uuid="ce8dac90-6475-41e1-947e-72fd0cd843f8"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_Direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="103" width="132" height="20" forecolor="#000000" uuid="453449a1-a563-4577-b80d-29f8d74d36be"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="103" width="338" height="18" uuid="e3b055b9-e78c-4880-9b29-e8d65000ff66"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_Telefono}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="123" width="132" height="20" forecolor="#000000" uuid="9b078533-cd6e-4e11-9f33-370c672f2764"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERIAL DEL EQUIPO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="123" width="338" height="18" uuid="fe87fea9-d205-46e5-bd3c-f71446a85b21"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacion_eq_Serial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="143" width="132" height="20" forecolor="#000000" uuid="81fe5f36-24c0-4ad6-b13d-ee900f314635"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="143" width="338" height="18" uuid="420538e8-4fd3-4d9f-a939-91f4ae93b0ca"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipos_tipo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="163" width="132" height="20" forecolor="#000000" uuid="658703e8-3ec0-499d-b349-a8d39b79c39c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="163" width="338" height="18" uuid="8485d914-b648-4813-9771-16e548c3e4cc"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipos_marca}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="183" width="132" height="20" forecolor="#000000" uuid="eac92b07-0724-4874-8e1c-8721878ef64d"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="183" width="338" height="18" uuid="0ac11c26-fa05-4b54-b588-a8a0822967ce"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipos_modelo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="203" width="132" height="20" forecolor="#000000" uuid="9617c3c8-bdce-4d4a-a8ba-02ed71d25119"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="203" width="338" height="18" uuid="9e113d53-8a22-4516-89c5-25966cf8441b"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{equipos_observaciones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="309" width="132" height="20" forecolor="#000000" uuid="347c1f44-a3c6-4139-a024-94f44313c48d"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atendido Por:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="201" y="309" width="338" height="18" uuid="71f851f9-ba05-4a36-970d-f13949be892e"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacion_em_Nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="65" y="223" width="132" height="20" forecolor="#000000" uuid="47e45bfc-96d6-49cf-9da4-eb6f739c2c40"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Prometido]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="199" y="223" width="338" height="18" uuid="6165cdfe-eafb-4dad-b7a3-ec327d27334c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Consolas" size="12" isBold="false" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturacion_txtFecha_Salida}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="13885ab4-ca4a-440c-b0b6-7ad442356011"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#9DB1B8" uuid="48815233-7b48-47ff-be61-beeab33673f5"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="06d0cf7e-d604-4010-a19c-013224f54661"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Consolas" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
